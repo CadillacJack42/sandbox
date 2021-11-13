@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <main id="game-board-container">
+        <section id="gm-panel">
+            GM Control
+            <div id="monster-array">
+                monster array
+                <select name="gm-monster" id="gm-monster">
+                    <option value="monster1">Monster1</option>
+                    <option value="monster2">Monster2</option>
+                    <option value="monster3">Monster3</option>
+                    <option value="monster4">Monster4</option>
+                </select>
+            </div>
+            <button class="btn" id='gm-add'>add</button>
+            <button class="btn" id="gm-remove">remove</button>
+            <div>
+                <ul>
+                    <li>Monster1</li>
+                    <li>Monster2</li>
+                    <li>Monster3</li>
+                    <li>Monster4</li>
+                </ul>
+            </div>
+            <button class="btn" id="gm-roll">Roll</button>
+        </section>
+        <section id="turn-results">
+            turn results
+        </section>
+        <section id="game-table">
+            Game Table
+            <div id="table"></div>
+        </section>
+        <section id="user-panel">
+            User Control
+            <div id="char-info">
+                Character char-info
+                <hr>
+                <p>
+                    Name: Me 
+                    <br>
+                    HP: All
+                    <br>
+                    MP: 100
+                </p>
+            </div>
+            <div id="user-inventory">
+                User Inventory
+                <hr>
+                <p>
+                    Bazooka
+                    <br>
+                    Chucky Doll
+                    <br>
+                    Pointy Stick
+                </p>
+            </div>
+            <div>
+                Player Ability Used
+                <hr>
+                <p>
+                    You ain't seen nothin yet
+                </p>
+            </div>
+            <button class="btn">Roll</button>
+        </section>
+    </main>
+
+    <script src="app.js"></script>
+</body>
+</html>
