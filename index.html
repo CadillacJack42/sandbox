@@ -12,22 +12,18 @@
         <section id="gm-panel">
             GM Control
             <div id="monster-array">
-                monster array
-                <select name="gm-monster" id="gm-monster">
-                    <option value="monster1">Monster1</option>
-                    <option value="monster2">Monster2</option>
-                    <option value="monster3">Monster3</option>
-                    <option value="monster4">Monster4</option>
+                <select name="gm-monster" id="gm-monster" multiple='multiple' size="5">
                 </select>
             </div>
-            <button class="btn" id='gm-add'>add</button>
-            <button class="btn" id="gm-remove">remove</button>
+            <div id="add-remove-btns">
+                <button class="btn" id='gm-add'>Add Monster</button>
+                <button class="btn" id="gm-remove">Remove Monster</button>
+            </div>
             <div>
                 <ul>
                     <li>Monster1</li>
                     <li>Monster2</li>
                     <li>Monster3</li>
-                    <li>Monster4</li>
                 </ul>
             </div>
             <button class="btn" id="gm-roll">Roll</button>
@@ -36,30 +32,54 @@
             turn results
         </section>
         <section id="game-table">
-            Game Table
+            <div class="gm-monsters" id="gm-monster-1">
+                <p class="gm-monster-stats">Name: <span id="gm-monster-1-name">Monster</span></p>
+                <p class="gm-monster-stats">HP: <span id="gm-monster-1-hp">100</span></p>
+                <p class="gm-monster-stats">MP: <span id="gm-monster-1-mp">100</span></p>
+                <p class="gm-monster-stats">Status: <span id="gm-monster-1-status"></span></p>
+            </div>
+            <div class="gm-monsters" id="gm-monster-2">
+                <p class="gm-monster-stats">Name: <span id="gm-monster-2-name">Monster</span></p>
+                <p class="gm-monster-stats">HP: <span id="gm-monster-2-hp">100</span></p>
+                <p class="gm-monster-stats">MP: <span id="gm-monster-2-mp">100</span></p>
+                <p class="gm-monster-stats">Status: <span id="gm-monster-2-status"></span></p>
+            </div>
+            <div class="gm-monsters" id="gm-monster-3">
+                <p class="gm-monster-stats">Name: <span id="gm-monster-3-name">Monster</span></p>
+                <p class="gm-monster-stats">HP: <span id="gm-monster-3-hp">100</span></p>
+                <p class="gm-monster-stats">MP: <span id="gm-monster-3-mp">100</span></p>
+                <p class="gm-monster-stats">Status: <span id="gm-monster-3-status"></span></p>
+            </div>
             <div id="table"></div>
         </section>
         <section id="user-panel">
             User Control
             <div id="char-info">
-                Character char-info
+                Character Info
                 <hr>
                 <p>
-                    Name: Me 
-                    <br>
-                    HP: All
-                    <br>
-                    MP: 100
+                    Name: <span id="user-monster-name">Me</span>
+                </p>
+                <p>
+                    HP: <span id="user-monster-hp">100</span>
+                </p>
+                <p>
+                    MP: <span id="user-monster-mp">100</span>
+                </p>
+                <p>
+                    Status: <span id="user-monster-status"></span>
                 </p>
             </div>
             <div id="user-inventory">
                 User Inventory
                 <hr>
-                <p>
+                <p class="user-inventory" id="user-item-1">
                     Bazooka
-                    <br>
+                </p>
+                <p class="user-inventory" id="user-item-2">
                     Chucky Doll
-                    <br>
+                </p>
+                <p class="user-inventory" id="user-item-3">
                     Pointy Stick
                 </p>
             </div>
@@ -74,6 +94,6 @@
         </section>
     </main>
 
-    <script src="app.js"></script>
+    <script type="module" src="app.js"></script>
 </body>
 </html>

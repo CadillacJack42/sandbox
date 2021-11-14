@@ -1,19 +1,21 @@
-async function fetchAsync (url) {
-    let response = await fetch(url);
-    let data = await response.json();
+import { gmMonsterArray } from "./gmMonsters.js"
 
-    // Logs out {count: 319, results: Array(319)}
-    // console.log(data)
+const monsterArray = document.getElementById('gm-monster')
+console.log(monsterArray.item([0]));
 
-    // Logs all 319 objects broken up into arrays of 100 length
-    // console.log(data.results)
+const getMonsters = document.getElementById('gm-roll')
+console.log(getMonsters);
 
-    //  Logs out object at first index of the 319 objects
-    // console.log(data.results[0])
+// getMonsters.addEventListener('click', {
+//     for (let i = 0; i < array.length; i++) {
+//         const element = array[i];
+        
+//     }
+// })
 
-    //  Logs name attribute of object
-    // console.log(data.results[0].name)
-    return data;
-  };
+// testFunc('https://www.dnd5eapi.co/api/monsters/barbed-devil')
+// testFunc('https://www.dnd5eapi.co/api/monsters/')
 
-fetchAsync('https://www.dnd5eapi.co/api/spells/')
+
+gmMonsterArray('https://www.dnd5eapi.co/api/monsters/')
+
