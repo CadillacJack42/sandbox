@@ -135,10 +135,6 @@ p{
     overflow: hidden;
 }
 
-#monster-pane{
- /* margin-top: 25px; */
-}
-
 #character-pane{
     height: 30%;
     border-radius: 0 0 5px 5px; 
@@ -300,7 +296,6 @@ p{
     font-size: 1.5rem;
     margin-right: 5px;
     margin-left: 5px;
-    /* margin: 3px 10px; */
 }
 
 .name-divider{
@@ -308,10 +303,13 @@ p{
     justify-content: center;
     align-items: center;
     height: 100%;
-    /* flex-direction: column; */
 }
 
 .bold{
     font-weight: bolder;
     text-decoration: underline;
+}
+
+.is-selected{
+    box-shadow: 0 0 10px chartreuse;
 }
