@@ -1,21 +1,16 @@
 import { gmMonsterArray } from "./gmMonsters.js"
+import { populator } from "./populateGmMonsters.js"
 
 const monsterArray = document.getElementById('gm-monster')
-console.log(monsterArray.item([0]));
-
+const gmAddBtn = document.getElementById('gm-add')
+const chosenMonsters = document.getElementById('chosen-monsters')
 const getMonsters = document.getElementById('gm-roll')
-console.log(getMonsters);
 
-// getMonsters.addEventListener('click', {
-//     for (let i = 0; i < array.length; i++) {
-//         const element = array[i];
-        
-//     }
-// })
+let fullMonsterArr = await gmMonsterArray('https://www.dnd5eapi.co/api/monsters/')
 
-// testFunc('https://www.dnd5eapi.co/api/monsters/barbed-devil')
-// testFunc('https://www.dnd5eapi.co/api/monsters/')
-
-
-gmMonsterArray('https://www.dnd5eapi.co/api/monsters/')
-
+// let monsterArr = []
+gmAddBtn.addEventListener('click', () => {
+    populator(fullMonsterArr)
+    console.log(fullMonsterArr);
+    
+})

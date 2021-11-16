@@ -1,16 +1,14 @@
 const dropDown = document.getElementById('gm-monster')
-console.log(dropDown);
-
 
 export async function gmMonsterArray (url) {
+    let arr = []
     let response = await fetch(url);
     let data = await response.json();
-
+    // console.log(data);
     for (let i = 0; i < data.results.length; i++) {
-        let element = data.results[i].name;
-        console.log(element);
-        dropDown.innerHTML += '<option value="' + element + '">' + element + '</option>'
+      arr.push(data.results[i])
+      
     }
-    return data;
+    console.log(arr);
+    return arr;
   };
-// gmMonsterArray('https://www.dnd5eapi.co/api/monsters/')
