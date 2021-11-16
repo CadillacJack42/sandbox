@@ -90,7 +90,7 @@ option:checked:before { content: "☑ " }
     border: 1px solid black;
     height: 50%;
     width: 75%;
-    border-radius: 40%;
+    border-radius: 0%;
     position: relative;
     top: 25%;
     left: 20%;
