@@ -1,114 +1,317 @@
+
+
+@import url('https://fonts.googleapis.com/css2?family=Skranji:wght@400;700&display=swap');
+
 * {
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: sans-serif;
 }
 
-li {
-    list-style: none;
+body{
+    background: 
+    linear-gradient(
+      rgba(22, 5, 61, 0.8), 
+      rgba(0, 0, 0, 0.8)
+    ),
+    url(./assets/image/seamless_medieval_stone_wall_texture_texturise.jpg-diffuse.jpg);
 }
 
-#game-board-container {
-    border: 1px solid black;
+header{
+    position: fixed;
+    height: 25px;
+    width: 100%;
+    background-color: black;
+    top:0;
+    border-bottom: 3px solid goldenrod;
+}
+
+main{
+    padding: 25px 0;
     height: 100vh;
-    width: 100vw;
-    display: grid;
-    grid-template-columns: auto;
-    grid-template-rows: 20% 15% 1fr 20%;
+    display: flex;
     justify-content: center;
     align-items: center;
-    text-align: center;
-}
-
-#gm-panel {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
-    align-items: center;
-    border: 1px solid blue;
-    height: 100%;
-    width: 100vw;
-    grid-row: 1;
-}
-
-#add-remove-btns {
-    display: flex;
     flex-direction: column;
 }
 
-#turn-results {
-    border: 1px solid green;
-    height: 100%;
-    width: 85%;
-    margin: 0 auto;
-    grid-row: 2;
+input{
+    cursor: pointer;
+    font-family: 'Skranji';
+    padding: 5px 8px;
+    margin-top: 5px;
 }
 
-#game-table {
-    border: 1px solid red;
-    height: 100%;
-    grid-row: 3;
-    display: grid;
-    grid-template-columns: 15% 20% 30% 20% 15%;
-    grid-template-rows: 40% 20% 40%;
-    /* justify-content: center;
-    align-items: center; */
-    
+footer{
+    position: fixed;
+    height: 25px;
+    width: 100%;
+    background-color: black;
+    bottom:0;
+    border-top: 3px solid goldenrod;
 }
 
-.gm-monsters {
-    height: 50px;
-    width: 100px;
-    border: 1px solid black;
-    margin: 0 auto;
-    margin-top: 10px;
+p{
+    line-height: 1.25rem;
 }
 
-option:before { content: "☐ " }
-option:checked:before { content: "☑ " }
-
-.gm-monster-stats {
-    font-size: small;
-}
-
-#gm-monster-1 {
-    grid-row: 1;
-    grid-column: 2;
-}
-#gm-monster-2 {
-    grid-row: 1;
-    grid-column: 3;
-}
-#gm-monster-3 {
-    grid-row: 1;
-    grid-column: 4;
-}
-
-#table {
-    grid-column: 1 / 5;
-    grid-row: 1/4;
-    border: 1px solid black;
-    height: 50%;
-    width: 75%;
-    border-radius: 0%;
-    position: relative;
-    top: 25%;
-    left: 20%;
-} 
-
-#user-panel {
-    border: 1px solid orange;
-    grid-row: 4;
+#add-button-holder{
+    padding: 0 50px;
     display: flex;
-    flex-direction: row;
-    justify-content: space-evenly;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    width: 150px;
+}
+
+#roll-wrapper{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 150px;
+    padding: 0 50px;
+}
+
+.button-size{
+    width: 100px;
+    padding: 10px 20px;
+}
+
+#results-panel{
+    width: 100%;
+}
+
+#combat-area{
+    width: 100%;
+}
+
+#player-control{
+    background-color: deepskyblue;
+    width: 100%;
+}
+
+.title{
+    font-family: 'Skranji';
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 20px;
+    color: goldenrod;
+    letter-spacing: .063rem;
+    text-transform: uppercase;
+    transform: rotate(-90deg);
+    line-height: 0;
+}
+
+.rotate{
+    width: 200px;
+    position: absolute;
+    left: -80px;
+    background-color: black;
+}
+
+#action-panel{
+    width: 90%;
+    background-color: white;
+    height: 200px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    position: relative;
+    overflow: hidden;
+    border-radius: 5px;
+    border: 1px solid goldenrod;
+}
+
+.combat-text{
+    width: 100%;
+    height: 200px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    padding-bottom: 10px;
+    margin-left: 55px;
+    overflow: hidden;
+}
+
+#monster-pane{
+ /* margin-top: 25px; */
+}
+
+#character-pane{
+    height: 30%;
+    border-radius: 0 0 5px 5px; 
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#monster-pane{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.monster{
+    width: 150px;
+    border: 1px solid goldenrod;
+    padding: 10px 10px 20px 10px;
+    display: flex;
+    justify-content: start;
+    align-items: flex-start;
+    flex-direction: column;
+    margin: 0 5px;
+    margin-bottom: 10px;
+    border-radius: 5px;
+    background-color: #49494988;
+}
+
+.monster-image{
+    width: 130px;
+    height: 100px;
+    margin-right: 5px;
+    object-fit: cover;
+    border: 1px solid goldenrod;
+    border-radius: 3px;
+}
+
+.monster-name, .player-name, .hp, .mp{
+    font-family: 'Skranji'; 
+    color:goldenrod
+}
+
+.monster-name, .player-name{
+    margin-bottom: 10px;
+    text-align: left;
+    width: 100%;
+}
+
+.player-name{
+    margin-bottom: 5px;;
+}
+
+.player-monster{
+    border: 1px solid goldenrod;
+    padding: 10px 10px 20px 10px;
+    border-radius: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    background-color: #49494988
+}
+
+.hp{
+    color: red;
+    margin-top: 3px;
+}
+
+.mp{
+    color: cyan;
+    margin-top: 3px;
+}
+
+.point-style{
+    font-family: monospace;
+    font-size: 1.063rem;
+    color: white;
+    width: 100px;
+    text-align: right;
+}
+
+.stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    /* width: 100%; */
+}
+
+.player-stats{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+}
+
+#player-pane{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 30px;
+}
+
+#fight-button{
+    margin-top: 0;
+    margin-bottom: 20px;
+    padding: 3px 5px;
+    font-family: skranji;
+    font-size: 1.25rem;
+}
+
+
+.point-style{
+    background-color: white;
+    color: black;
+    padding: 1px 3px;
+    margin-left: 3px;
+}
+
+.player-point-style{
+    background-color: white;
+    color: black;
+    padding: 1px 3px;
+    margin-left: 3px;
+    font-size: 1.5rem;
+}
+
+#stats{
+    margin-top: 5px;
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+}
+
+.direction{
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.player-attack{
+    color: blue;
+}
+
+.monster-attack{
+    color: red;
+}
+
+.player-actions{
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    margin-left: 10px;
+}
+
+.player-stat-style{
+    font-size: 1.5rem;
+    margin-right: 5px;
+    margin-left: 5px;
+    /* margin: 3px 10px; */
+}
+
+.name-divider{
+    display: flex;
+    justify-content: center;
     align-items: center;
     height: 100%;
-
+    /* flex-direction: column; */
 }
 
-.btn {
-    height: 50px;
-    width: 75px;
-    margin-top: 5px;
+.bold{
+    font-weight: bolder;
+    text-decoration: underline;
 }
