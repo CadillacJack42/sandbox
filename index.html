@@ -8,92 +8,101 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <main id="game-board-container">
-        <section id="gm-panel">
-            GM Control
-            <div id="monster-array">
-                <select name="gm-monster" id="gm-monster" multiple='multiple' size="5">
-                </select>
+    <header>
+    </header>
+    <main id="background">
+        <!-- computer generated monster team -->
+        <div id="monster-pane">
+            <div class="monster">
+                <div class="monster-name">
+                    Pit Fiend
+                </div>
+                <img src="./assets/image/pit-fiend.jpg" alt="" class="monster-image">
+                <div class="stats">
+                    <div id="stats">
+                        <div class="hp direction">
+                            HP: <span class="point-style">100</span>
+                        </div>
+                        <div class="mp direction">
+                            MP: <span class="point-style">100</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div id="add-remove-btns">
-                <button class="btn" id='gm-add'>Add Monster</button>
-                <button class="btn" id="gm-remove">Remove Monster</button>
+            <div class="monster">
+                <div class="monster-name">
+                    Xenomorph
+                </div>
+                <img src="./assets/image/xenomorph.jpg" alt="" class="monster-image">
+                <div class="stats">
+                    <div id="stats">
+                        <div class="hp direction">
+                            HP: <span class="point-style">100</span>
+                        </div>
+                        <div class="mp direction">
+                            MP: <span class="point-style">100</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <div>
-                <ul>
-                    <li>Monster1</li>
-                    <li>Monster2</li>
-                    <li>Monster3</li>
-                </ul>
+            <div class="monster">
+                <div class="monster-name">
+                    Lava Spewer
+                </div>
+                <img src="./assets/image/lava-spewer.jpg" alt="" class="monster-image">
+                <div class="stats">
+                    <div id="stats">
+                        <div class="hp direction">
+                            HP: <span class="point-style">100</span>
+                        </div>
+                        <div class="mp direction">
+                            MP: <span class="point-style">100</span>
+                        </div>
+                    </div>
+                </div>
             </div>
-            <button class="btn" id="gm-roll">Roll</button>
-        </section>
-        <section id="turn-results">
-            turn results
-        </section>
-        <section id="game-table">
-            <div class="gm-monsters" id="gm-monster-1">
-                <p class="gm-monster-stats">Name: <span id="gm-monster-1-name">Monster</span></p>
-                <p class="gm-monster-stats">HP: <span id="gm-monster-1-hp">100</span></p>
-                <p class="gm-monster-stats">MP: <span id="gm-monster-1-mp">100</span></p>
-                <p class="gm-monster-stats">Status: <span id="gm-monster-1-status"></span></p>
+        </div>
+        <div id="action-panel">
+            <div class="title rotate">
+                combat panel
             </div>
-            <div class="gm-monsters" id="gm-monster-2">
-                <p class="gm-monster-stats">Name: <span id="gm-monster-2-name">Monster</span></p>
-                <p class="gm-monster-stats">HP: <span id="gm-monster-2-hp">100</span></p>
-                <p class="gm-monster-stats">MP: <span id="gm-monster-2-mp">100</span></p>
-                <p class="gm-monster-stats">Status: <span id="gm-monster-2-status"></span></p>
+            <div class="combat-text">
+                <p>:>> <span class="player-attack">Your Archer's piercing attack does <span class="bold">9</span> damage to enemy Pit Fiend.</span></p>
+                <p>:>> <span class="monster-attack">Enemy Xenomorph's bite attack hits your Archer for <span class="bold">12</span> damage.</span></p>
             </div>
-            <div class="gm-monsters" id="gm-monster-3">
-                <p class="gm-monster-stats">Name: <span id="gm-monster-3-name">Monster</span></p>
-                <p class="gm-monster-stats">HP: <span id="gm-monster-3-hp">100</span></p>
-                <p class="gm-monster-stats">MP: <span id="gm-monster-3-mp">100</span></p>
-                <p class="gm-monster-stats">Status: <span id="gm-monster-3-status"></span></p>
+        </div>
+        <!-- player monster team -->
+        <div id="player-pane">         
+            <div class="player-monster">
+                <div class="player-name">
+                    Archer
+                </div>
+                <div class="name-divider">
+                    
+                    <div id="player-image">
+                        
+                        <img src="./assets/image/archer.jpg" alt="" class="monster-image">
+                    </div>
+                    <div class="stats">
+                        <div id="player-stats">
+                            <div class="player-stat-style hp direction">
+                                HP: <span class="player-point-style">100</span>
+                            </div>
+                            <div class="player-stat-style mp direction">
+                                MP: <span class="player-point-style">100</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="player-actions">
+                        <input type="button" value="Attack">
+                        <input type="button" value="Retreat">
+                    </div> 
+                </div>
             </div>
-            <div id="table"></div>
-        </section>
-        <section id="user-panel">
-            User Control
-            <div id="char-info">
-                Character Info
-                <hr>
-                <p>
-                    Name: <span id="user-monster-name">Me</span>
-                </p>
-                <p>
-                    HP: <span id="user-monster-hp">100</span>
-                </p>
-                <p>
-                    MP: <span id="user-monster-mp">100</span>
-                </p>
-                <p>
-                    Status: <span id="user-monster-status"></span>
-                </p>
-            </div>
-            <div id="user-inventory">
-                User Inventory
-                <hr>
-                <p class="user-inventory" id="user-item-1">
-                    Bazooka
-                </p>
-                <p class="user-inventory" id="user-item-2">
-                    Chucky Doll
-                </p>
-                <p class="user-inventory" id="user-item-3">
-                    Pointy Stick
-                </p>
-            </div>
-            <div>
-                Player Ability Used
-                <hr>
-                <p>
-                    You ain't seen nothin yet
-                </p>
-            </div>
-            <button class="btn">Roll</button>
-        </section>
+        </div>
     </main>
-
+    <footer></footer>
+    </footer>
     <script type="module" src="app.js"></script>
 </body>
 </html>
