@@ -1,19 +1,20 @@
-import { monsterStats } from "./monsterStats.js";
-import { randomNumGen } from "./random.js";
+import { formatter } from "./textFormatter.js"
+
+const monsterNames = document.getElementsByClassName('monster-name')
+const monsterImage = document.getElementsByClassName('monster-image')
+const monsterHp1 = document.getElementById("monster-01-hp")
+const monsterHp2 = document.getElementById("monster-02-hp")
+const monsterHp3 = document.getElementById("monster-03-hp")
 
 export const populator = async (fullMonsterArr) => {
-    console.log(fullMonsterArr);
-    let monsterArr = []
-    const url = 'https://www.dnd5eapi.co'
+
+    monsterHp1.textContent = formatter(fullMonsterArr[0])
+    monsterHp2.textContent = formatter(fullMonsterArr[1])
+    monsterHp3.textContent = formatter(fullMonsterArr[2])
 
     for (let i = 0; i < 3; i++) {
-        let rdmNum = randomNumGen(fullMonsterArr.length)
-        let indicies = fullMonsterArr[rdmNum].url
-        // console.log(indicies);
-        await monsterStats(url + indicies, monsterArr);
+        monsterNames[i].textContent = fullMonsterArr[i].name
+        // console.log(fullMonsterArr[i].img_url);
+        monsterImage[i].src = fullMonsterArr[i].img_url
     }
-    console.log(monsterArr);
-    console.log(monsterArr[0].actions);
-    console.log(monsterArr[0].actions[0].damage);
-    console.log(monsterArr[0].actions[0].damage[0].damage_dice);
 }
