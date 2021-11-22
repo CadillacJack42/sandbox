@@ -5,21 +5,9 @@ const monsterOpponents = new monsterWar;
 await monsterOpponents.getMonsters()
 monsterOpponents.sortMonsters()
 
-const lvlList = monsterOpponents.getLvlMonsters(4)
 const lvlList1 = monsterOpponents.getLvlMonsters(4)
-const lvlList2 = monsterOpponents.getLvlMonsters(1)
 
 const game = new GameState
-
-const user = new Heroes(players[0])
-
-const monsterlist = []
-for (let i = 0; i < lvlList2.length; i++) {
-    const element = lvlList2[i];
-    monsterlist.push(new Monsters(element)) 
-}
-
-const rdmNums = new Randos
 
 const playerChoices = document.getElementsByClassName('char')
 const rules = document.getElementById('rules')
@@ -52,6 +40,6 @@ let pops = new Populate
 characterChoice.addEventListener('click', () => {
     let char = game.chosenChar().children[0].textContent
     pops.playerPop(char)
-    characterselection.classList.add('visibility')
     pops.monsterPop(lvlList1)
+    characterselection.classList.add('visibility')
 })
