@@ -4,7 +4,7 @@ import { Attack, GameState, monsterWar, Randos } from "./classes.js";
 
 //  Get Attack And Heal Buttons
 const attackBtn = document.getElementById('attack')
-const heal = document.getElementById('heal')
+const healBtn = document.getElementById('heal')
 
 //  Get Monster Tiles
 const monster1 = document.getElementById('monster-01')
@@ -90,4 +90,9 @@ monster3.addEventListener('click', () => {
 attackBtn.addEventListener('click', () => {
     let attack = new Attack(game.player)
     attack.whoAttacks(game, game.getMonsters())
+})
+//  Listener For Heal Button
+healBtn.addEventListener('click', () => {
+    let attack = new Attack(game.player)
+    attack.heal(game, game.getMonsters())
 })

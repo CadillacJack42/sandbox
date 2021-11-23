@@ -89,6 +89,8 @@ export class GameState{
         this.monsterName = document.getElementsByClassName('monster-name')
         this.monsterIMG = document.getElementsByClassName('monster-image')
         this.monsterHP = document.getElementsByClassName('monster-hp')
+        this.loss = document.getElementById('you-lose')
+        this.win = document.getElementById('you-win')
 
         this.level = 1;
         this.lives = 3;
@@ -171,11 +173,20 @@ export class GameState{
         return this.currentMonsters
     }
     updateHP(){
+        let checkArr = []
+        if (this.player.getHP() === 0) {
+            this.loss.classList.remove('visibility')
+        }
         this.playerHp.textContent = this.player.getHP()
         for (let i = 0; i < this.currentMonsters.length; i++) {
             const element = this.currentMonsters[i];
             this.monsterHP[i].textContent = element.getHP()
-            
+            checkArr.push(element.getHP())
+            console.log(checkArr);
+        }
+        if (checkArr[0] === 0 && checkArr[1] === 0 && checkArr[2] === 0) {
+            console.log("WINNER WINNER CHICKEN DINNER");
+            this.win.classList.remove('visibility')
         }
     }
 }
@@ -295,8 +306,21 @@ export class Attack{
     whoAttacks(state, mon){
         for (let i = 0; i < 3; i++) {
             if (this.playerAttackCheck[i] > this.monsterDefenseCheck[i] && mon[i].getName() === state.chosenTarget().children[0].textContent) {
-                mon[i].takeDamage(state.player.dealDamage())
+                if (mon[i].getHP() === 0) {
+                    continue
+                } else {
+                    mon[i].takeDamage(state.player.dealDamage())
+                }
             }
+            if (this.playerDefenseCheck[i] < this.monsterAttackCheck[i] && mon[i].getHP() > 0) {
+                state.player.takeDamage(this.random.monsterDamage(mon[i].getHP()))
+            }
+        }
+        state.updateHP()
+    }
+    heal(state, mon){
+        state.player.heal()
+        for (let i = 0; i < 3; i++) {
             if (this.playerDefenseCheck[i] < this.monsterAttackCheck[i]) {
                 state.player.takeDamage(this.random.monsterDamage(mon[i].getHP()))
             }
