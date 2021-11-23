@@ -1,11 +1,27 @@
 
 //  Imports For Various Operations
-import { Attack, GameState, Heroes, Monsters, monsterWar, Populate, Randos } from "./classes.js";
-import { players } from "./playerCharacter.js"
+import { Attack, GameState, monsterWar, Randos } from "./classes.js";
 
 //  Get Attack And Heal Buttons
-const attack = document.getElementById('attack')
+const attackBtn = document.getElementById('attack')
 const heal = document.getElementById('heal')
+
+//  Get Monster Tiles
+const monster1 = document.getElementById('monster-01')
+const monster2 = document.getElementById('monster-02')
+const monster3 = document.getElementById('monster-03')
+
+//  Get Rules Pane
+const rules = document.getElementById('rules')
+
+//  Get Character Selection Pane 
+const characterselection = document.getElementById('chooser-id')
+
+//  Get All Character Class Choices
+const playerChoices = document.getElementsByClassName('char')
+
+//  Get "Choose Your Hero" Button From Character Selection Pane
+const characterChoice = document.getElementById('pick-char-button')
 
 //  Create New Instance Of Random Number Gens
 const random = new Randos
@@ -20,26 +36,10 @@ await monsterOpponents.getMonsters()
 monsterOpponents.sortMonsters()
 
 //  Test Variable To Populate Monsters !!!---REMOVE AFTER LOGIC---!!!
-const lvlList1 = monsterOpponents.getLvlMonsters(4)
+const lvlList1 = monsterOpponents.getLvlMonsters(1)
 
 //  Create New Instance Of State For Game
 const game = new GameState
-
-//  Create New Instance Of Random Number Generators
-const pops = new Populate
-
-//  Get Rules Pane
-const rules = document.getElementById('rules')
-
-//  Get Character Selection Pane 
-const characterselection = document.getElementById('chooser-id')
-
-//  Get All Character Class Choices
-const playerChoices = document.getElementsByClassName('char')
-
-//  Get "Choose Your Hero" Button From Character Selection Pane
-const characterChoice = document.getElementById('pick-char-button')
-
 
 // Hide Rules Pane, Display Character Selection Pane
 rules.addEventListener('click', () => {
@@ -69,33 +69,25 @@ playerChoices[4].addEventListener('click', () => {
 //  Choose Character, Hide Character Selection Pane,
 //  Populate Player and Monster Tiles In Game
 characterChoice.addEventListener('click', () => {
-    let char = game.chosenChar().children[0].textContent
-    pops.playerPop(char)
-    pops.monsterPop(lvlList1)
+    let player = game.chosenChar().children[0].textContent
+    game.playerPop(player)
+    game.monsterPop(lvlList1)
     characterselection.classList.add('visibility')
 })
-//  Listener For Attack Button
-attack.addEventListener('click', () => {
-    attack = new Attack
-    attack.whoAttacks()
+//  Listener To Target Monster1 For Attack
+monster1.addEventListener('click', () => {
+    game.chooseTarget(monster1)
 })
-
-
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//  THIS IS WHERE WE ARE WORKING
-//  REFERENCE CLASSES/ATTACK.WHOATTACKS()
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-// const checks = () => {
-//     const monsters = document.getElementsByClassName('monster')
-//     let attacks = new Attack()
-//     let player = game.chosenChar().children[0].textContent
-//     for (let i = 0; i < monsters.length; i++) {
-//         const element = monsters[i];
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-//  THIS IS WHERE WE ARE WORKING
-//  REFERENCE CLASSES/ATTACK.WHOATTACKS()
-// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-
-        
-//     }
-// }
+//  Listener To Target Monster2 For Attack
+monster2.addEventListener('click', () => {
+    game.chooseTarget(monster2)
+})
+//  Listener To Target Monster3 For Attack
+monster3.addEventListener('click', () => {
+    game.chooseTarget(monster3)
+})
+//  Listener For Attack Button
+attackBtn.addEventListener('click', () => {
+    let attack = new Attack(game.player)
+    attack.whoAttacks(game, game.getMonsters())
+})
