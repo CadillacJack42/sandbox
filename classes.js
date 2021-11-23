@@ -1,4 +1,5 @@
-import { d } from "./monsterDamage.js";
+
+
 import { players } from "./playerCharacter.js";
 import { randomNumGen } from "./random.js";
 import { hpFormatter, acFormatter, xpFormatter } from "./textFormatter.js";
@@ -8,6 +9,7 @@ export class Monsters {
         this.hp = Number(hpFormatter(monster['Hit Points']));
         this.monsterName = monster.name;
         this.img = monster.img_url;
+        this.attack = this.dealDamage
         this.armor = Number(acFormatter(monster['Armor Class']));
         this.strength = Number(monster.STR)
         this.xp = Number(xpFormatter(monster.Challenge))
@@ -16,7 +18,8 @@ export class Monsters {
         this.hp -= damage
     }
     dealDamage(){
-        return d(this.hp)
+        let random = new Randos
+        return random.monsterDamage()
     }
     getName(){
         return this.monsterName
@@ -35,7 +38,7 @@ export class Heroes {
         this.heroName = undefined;
         this.class = character.name;
         this.hp = character.hp;
-        this.attack = character.attack
+        this.attack = this.dealDamage
         this.img = character.img_url;
         this.xp = 0;
     }
@@ -47,6 +50,25 @@ export class Heroes {
     }
     getImg(){
         return this.img
+    }
+    dealDamage(){
+        let random = new Randos
+        let damage;
+        //  MAKE HERO METHOD THAT STORES MODIFIER FOR PLAYER DAMAGE
+        // let mod = hero.modifier();
+        switch (this.hp) {
+            case 25:
+            case 30: 
+            case 35: 
+                console.log(random.lowHpDamage(1)); // SHOULD BE lowHpDamage(mod)
+                damage = random.lowHpDamage(1)
+                return random.lowHpDamage(1)
+        
+            case 60:
+            case 70:
+                console.log(random.highHpDamage(1));
+                return random.highHpDamage(1)
+        }
     }
     takeDamage(damage){
         this.hp -= damage
@@ -238,13 +260,44 @@ export class Populate{
         this.playerName.textContent = champion.getName()
         this.playerImg.src = champion.getImg()
         this.playerHp.textContent = champion.getHP()
+        console.log(champion);
     }
     monsterPop(monsters){
         for (let i = 0; i < monsters.length; i++) {
+            let r = new Randos
             const element = new Monsters(monsters[i]);
             this.monsterName[i].textContent = element.getName()
             this.monsterHP[i].textContent = element.getHP()
             this.monsterIMG[i].src = element.getImg()
+            console.log(r.monsterDamage(element.getHP()));
         }
+    }
+}
+
+export class Attack{
+    constructor(char, mon){
+        const random = new Randos
+        this.playerAttackCheck = random.checkDice
+        this.playerDefenseCheck = random.checkDice
+        this.playerDamage =  char.dealDamage()
+        this.monsterAttackCheck = random.checkDice
+        this.monsterDefenseCheck = random.checkDice
+        this.monsterDamage =  mon.dealDamage()
+    }
+    whoAttacks(state, char, mon){
+        for (let i = 0; i < 3; i++) {
+            switch (i) {
+                case this.playerAttackCheck[i] > this.monsterDefenseCheck[i]:
+                    if (mon[i].monsterName === state.chosenTarget.children[0].textContent) {
+                        mon[i].takeDamage(char.dealDamage())
+                    } else {
+                        break;
+                    }
+                case this.playerDefenseCheck[i] < this.monsterAttackCheck:
+                    char.takeDamage(mon.attack())
+            }
+            
+        }
+
     }
 }
