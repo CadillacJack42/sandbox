@@ -25,6 +25,7 @@ header{
     background-color: black;
     top:0;
     border-bottom: 3px solid goldenrod;
+    z-index: 999;
 }
 
 main{
@@ -34,6 +35,8 @@ main{
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    position: relative;
+    overflow: hidden;
 }
 
 input{
@@ -52,9 +55,9 @@ footer{
     border-top: 3px solid goldenrod;
 }
 
-p{
+/* p{
     line-height: 1.25rem;
-}
+} */
 
 #add-button-holder{
     padding: 0 50px;
@@ -114,7 +117,7 @@ p{
 #action-panel{
     width: 90%;
     background-color: white;
-    height: 200px;
+    min-height: 200px;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -151,17 +154,19 @@ p{
 }
 
 .monster{
+    height: 215px;
     width: 150px;
     border: 1px solid goldenrod;
     padding: 10px 10px 20px 10px;
     display: flex;
-    justify-content: start;
+    justify-content: end;
     align-items: flex-start;
     flex-direction: column;
     margin: 0 5px;
     margin-bottom: 10px;
     border-radius: 5px;
     background-color: #49494988;
+
 }
 
 .monster-image{
@@ -217,13 +222,13 @@ p{
     text-align: right;
 }
 
-.stats{
+/* .stats{
     display: flex;
-    justify-content: center;
+    justify-content: space-between;
     align-items: center;
     flex-direction: column;
-    /* width: 100%; */
-}
+    width: 100%;
+} */
 
 .player-stats{
     display: flex;
@@ -259,16 +264,21 @@ p{
     background-color: white;
     color: black;
     padding: 1px 3px;
-    margin-left: 3px;
+    margin-left: 5px;
+    margin-right: 0;
     font-size: 1.5rem;
+    width: 110px;
+    text-align: right;
 }
 
-#stats{
+/* .stats{
     margin-top: 5px;
     display: flex;
     flex-direction: column;
+    align-items: center;
+    justify-content: space-between;
     gap: 5px;
-}
+} */
 
 .direction{
     display: flex;
@@ -278,17 +288,21 @@ p{
 
 .player-attack{
     color: blue;
+    line-height: 1.25rem;
 }
 
 .monster-attack{
     color: red;
+    line-height: 1.25rem;
 }
 
 .player-actions{
     height: auto;
     display: flex;
-    flex-direction: column;
-    justify-content: flex-end;
+    /* flex-direction: column; */
+    width: 150px;
+    justify-content: space-between;
+    
     margin-left: 10px;
 }
 
@@ -297,6 +311,7 @@ p{
     margin-right: 5px;
     margin-left: 5px;
 }
+
 
 .name-divider{
     display: flex;
@@ -312,4 +327,8 @@ p{
 
 .is-selected{
     box-shadow: 0 0 10px chartreuse;
+}
+
+.attack-button-style{
+    width: 73px;
 }
