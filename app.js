@@ -6,6 +6,9 @@ import { Attack, GameState, monsterWar, Randos } from "./classes.js";
 const attackBtn = document.getElementById('attack')
 const healBtn = document.getElementById('heal')
 
+//  Get Reset Buttons
+const reset = document.getElementsByClassName('play-again')
+
 //  Get Monster Tiles
 const monster1 = document.getElementById('monster-01')
 const monster2 = document.getElementById('monster-02')
@@ -71,7 +74,7 @@ playerChoices[4].addEventListener('click', () => {
 characterChoice.addEventListener('click', () => {
     let player = game.chosenChar().children[0].textContent
     game.playerPop(player)
-    game.monsterPop(lvlList1)
+    game.monsterPop(monsterOpponents.getLvlMonsters(game.currentLevel()))
     characterselection.classList.add('visibility')
 })
 //  Listener To Target Monster1 For Attack
@@ -96,3 +99,13 @@ healBtn.addEventListener('click', () => {
     let attack = new Attack(game.player)
     attack.heal(game, game.getMonsters())
 })
+
+//  Listeners For Win And Loss Pane Reset Buttons
+reset[0].addEventListener('click', () => {
+    characterselection.classList.remove('visibility')
+    game.win.classList.add('visibility')
+}) 
+reset[1].addEventListener('click', () => {
+    characterselection.classList.remove('visibility')
+    game.loss.classList.add('visibility')
+}) 
