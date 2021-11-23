@@ -91,6 +91,8 @@ export class GameState{
         this.monsterHP = document.getElementsByClassName('monster-hp')
         this.loss = document.getElementById('you-lose')
         this.win = document.getElementById('you-win')
+        this.winSound = new Audio('./assets/backgrounds/you-win.mp3')
+        this.loseSound = new Audio('./assets/backgrounds/you-lose.mp3')
 
         this.level = 1;
         this.lives = 3;
@@ -175,6 +177,7 @@ export class GameState{
     updateHP(){
         let checkArr = []
         if (this.player.getHP() === 0) {
+            this.loseSound.play()
             this.loss.classList.remove('visibility')
         }
         this.playerHp.textContent = this.player.getHP()
@@ -186,6 +189,7 @@ export class GameState{
         }
         if (checkArr[0] === 0 && checkArr[1] === 0 && checkArr[2] === 0) {
             console.log("WINNER WINNER CHICKEN DINNER");
+            this.winSound.play()
             this.win.classList.remove('visibility')
         }
     }

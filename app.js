@@ -14,6 +14,10 @@ const monster1 = document.getElementById('monster-01')
 const monster2 = document.getElementById('monster-02')
 const monster3 = document.getElementById('monster-03')
 
+// //  Get Win Loss Sounds
+// const winSound = document.getElementById('win-sound')
+// const loseSound = document.getElementById('lose-sound')
+
 //  Get Rules Pane
 const rules = document.getElementById('rules')
 
