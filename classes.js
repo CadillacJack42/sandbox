@@ -185,10 +185,8 @@ export class GameState{
             const element = this.currentMonsters[i];
             this.monsterHP[i].textContent = element.getHP()
             checkArr.push(element.getHP())
-            console.log(checkArr);
         }
         if (checkArr[0] === 0 && checkArr[1] === 0 && checkArr[2] === 0) {
-            console.log("WINNER WINNER CHICKEN DINNER");
             this.winSound.play()
             this.win.classList.remove('visibility')
         }
@@ -306,27 +304,52 @@ export class Attack{
         this.playerDefenseCheck = this.random.checkDice()
         this.monsterAttackCheck = this.random.checkDice()
         this.monsterDefenseCheck = this.random.checkDice()
+        this.report = document.getElementById('combat-text')
     }
     whoAttacks(state, mon){
         for (let i = 0; i < 3; i++) {
-            if (this.playerAttackCheck[i] > this.monsterDefenseCheck[i] && mon[i].getName() === state.chosenTarget().children[0].textContent) {
-                if (mon[i].getHP() === 0) {
-                    continue
-                } else {
-                    mon[i].takeDamage(state.player.dealDamage())
+            if (mon[i].getHP() > 0) {
+                if (mon[i].getName() === state.chosenTarget().children[0].textContent) {
+                    if (this.playerAttackCheck[i] > this.monsterDefenseCheck[i]) {
+                        let playerDamage = state.player.dealDamage()
+                        mon[i].takeDamage(playerDamage)
+                        let hit = `<p class="player-attack">:>> Your <span class="bold">${state.player.getName()}s</span> attack dealt <span class="bold">${playerDamage}</span> damage to enemy <span class="bold">${mon[i].getName()}</span></p>`
+                        this.report.insertAdjacentHTML('beforeend', hit)
+                    } else {
+                        let miss = `<p class="player-attack">:>> Your attack against <span class="bold">${mon[i].getName()}</span> failed</p>`
+                        this.report.insertAdjacentHTML('beforeend', miss)
+                    }
                 }
             }
-            if (this.playerDefenseCheck[i] < this.monsterAttackCheck[i] && mon[i].getHP() > 0) {
-                state.player.takeDamage(this.random.monsterDamage(mon[i].getHP()))
-            }
+            if (mon[i].getHP() > 0) {
+                if (this.playerDefenseCheck[i] < this.monsterAttackCheck[i] ) {
+                let monsterDamage = this.random.monsterDamage(mon[i].getHP())
+                state.player.takeDamage(monsterDamage)
+                let monsterHit = `<p class="monster-attack">:>><span class="bold">${mon[i].getName()}</span> attack dealt <span class="bold">${monsterDamage}</span> damage</p>`
+                this.report.insertAdjacentHTML('beforeend', monsterHit)
+                } else {
+                    let monsterMiss = `<p class="monster-attack">:>><span class="bold">${mon[i].getName()}</span> attack failed</p>`
+                    this.report.insertAdjacentHTML('beforeend', monsterMiss)
+                }
+            }  
         }
         state.updateHP()
     }
     heal(state, mon){
         state.player.heal()
+        let heal = `<p class="player-attack">:>> Your <span class="bold">${state.player.getName()}</span> successfully healed for <span class="bold">10</span> HP`
+        this.report.insertAdjacentHTML('beforeend', heal)
         for (let i = 0; i < 3; i++) {
-            if (this.playerDefenseCheck[i] < this.monsterAttackCheck[i]) {
-                state.player.takeDamage(this.random.monsterDamage(mon[i].getHP()))
+            if (mon[i].getHP() > 0) {
+                if (this.playerDefenseCheck[i] < this.monsterAttackCheck[i]) {
+                let monsterDamage = this.random.monsterDamage(mon[i].getHP())
+                state.player.takeDamage(monsterDamage)
+                let monsterHit = `<p class="monster-attack">:>><span class="bold">${mon[i].getName()}</span> attack dealt <span class="bold">${monsterDamage}</span> damage</p>`
+                this.report.insertAdjacentHTML('beforeend', monsterHit)            
+                } else {
+                    let monsterMiss = `<p class="monster-attack">:>><span class="bold">${mon[i].getName()}</span> attack failed</p>`
+                    this.report.insertAdjacentHTML('beforeend', monsterMiss)
+                }
             }
         }
         state.updateHP()
