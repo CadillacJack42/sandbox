@@ -87,6 +87,9 @@
                             <div class="player-stat-style hp direction">
                                 HP: <span class="player-point-style" id="player-hp"></span>
                             </div>
+                            <div class="player-xp xp direction">
+                                XP: <span class="player-point-style" id="player-xp">0</span>
+                            </div>
                             <!-- <div class="player-stat-style mp direction">
                                 MP: <span class="player-point-style" id="player-mp">100</span>
                             </div> -->
@@ -129,7 +132,10 @@
                         <div class="picture" id="chooser-pic-05"></div>
                     </div>
                 </div>
-                <input type="button" id="pick-char-button" value="Choose Your Hero">
+                <div class="char-namer">
+                    <p class="char-name">Enter Name: <input type="text" class="name-field" placeholder="input name"></p>
+                    <input type="button" id="pick-char-button" value="Choose Your Hero">
+                </div>
             </div>
         </section>
         <section class="you-win visibility" id="you-win">
