@@ -171,6 +171,15 @@ footer{
 
 .monster-image{
     width: 130px;
+    height: 120px;
+    margin-right: 5px;
+    object-fit: cover;
+    border: 1px solid goldenrod;
+    border-radius: 3px;
+}
+
+.player-image{
+    width: 130px;
     height: 160px;
     margin-right: 5px;
     object-fit: cover;
