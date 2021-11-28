@@ -171,7 +171,7 @@ footer{
 
 .monster-image{
     width: 130px;
-    height: 100px;
+    height: 160px;
     margin-right: 5px;
     object-fit: cover;
     border: 1px solid goldenrod;
@@ -190,7 +190,7 @@ footer{
 }
 
 .player-name{
-    margin-bottom: 5px;;
+    margin-bottom: 5px;
 }
 
 .player-monster{
@@ -204,13 +204,16 @@ footer{
     background-color: #49494988
 }
 
-.hp, .xp{
+.hp{
     color: red;
-    margin-top: 3px;
 }
+
 
 .mp{
     color: cyan;
+}
+
+.hp, .mp, .xp, .level, .lives{
     margin-top: 3px;
 }
 
@@ -301,14 +304,26 @@ footer{
     font-size: 1.5rem;
     margin-right: 5px;
     margin-left: 5px;
+    font-family: 'Skranji';
 }
 
+.level{
+    color: lightgreen
+}
+
+.lives {
+    color:lightskyblue
+}
 
 .name-divider{
     display: flex;
     justify-content: center;
     align-items: center;
     height: 100%;
+}
+
+.left-side{
+
 }
 
 .bold{
